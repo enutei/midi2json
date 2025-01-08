@@ -1,0 +1,30 @@
+#出力するjsonの形式
+"""
+※トラックが複数ある場合はそれぞれ別のjsonファイルにする。
+"note_data":[
+    {
+        "time":double[s]
+        "note":str(ex)C4)
+        "velocity":int[0-127]
+        "text":str
+        "beat_position":double(この音が小節内で何拍めか。[1,2^n+1)までの値)
+    },
+],
+"CC_data":[
+    "CC1":[
+        {
+            "time":double[s]
+            "value":int[0-127]
+        },
+        .....
+    ],
+    ...
+],
+"pitch_bend_data":[
+    {
+        "time":double[s]
+        "value":int[-8192-8191]
+    },
+    .....
+],
+"""
