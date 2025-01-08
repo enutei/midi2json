@@ -123,7 +123,7 @@ def main():
         "tempo_data": tempo_data,
         "beat_data": beat_data
     }
-    write_json_file("header.json", header_data)
+    write_json_file(f"header_{midi_file.tracks[0].name}.json", header_data)
 
     # 各トラックを解析
     for i, track in enumerate(midi_file.tracks[1:], start=1):
