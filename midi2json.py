@@ -43,7 +43,7 @@ def process_track(track, tick_per_beat, tempo_data, beat_data):
     print(track)
     absolute_time = 0.0
     absolute_tick = 0
-    current_tempo = 500000  # デフォルト値
+    current_tempo = 500000
     tempo_index = 0
     beat_index = 0
     same_time_notes = []
