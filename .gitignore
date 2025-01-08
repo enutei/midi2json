@@ -1,5 +1,4 @@
 /.venv
-/header.json
 /tempCodeRunnerFile.py
-/test.json
-/testmidi.mid
+/midi_files
+/json_output

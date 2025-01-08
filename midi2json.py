@@ -1,6 +1,8 @@
 import argparse
 import mido
 import json
+import os
+output_dir = "json_output"
 
 def note_number_to_name(note_number):
     """MIDIノート番号を音名に変換"""
@@ -8,12 +10,11 @@ def note_number_to_name(note_number):
     return note_name[note_number % 12] + str(note_number // 12 - 2)
 
 def parse_header(track, tick_per_beat):
-    """ヘッダートラックを解析し、テンポと拍子の変化を取得"""
     tempo_data = []
     beat_data = []
     absolute_time = 0.0
     absolute_tick = 0
-    current_tempo = 500000  # デフォルト値（120 BPM）
+    current_tempo = 500000  #デフォルト値（120 BPM）
     current_beat_numerator = 4
     current_beat_denominator = 4
 
@@ -40,7 +41,6 @@ def parse_header(track, tick_per_beat):
     return tempo_data, beat_data
 
 def process_track(track, tick_per_beat, tempo_data, beat_data):
-    print(track)
     absolute_time = 0.0
     absolute_tick = 0
     current_tempo = 500000
@@ -106,7 +106,11 @@ def process_track(track, tick_per_beat, tempo_data, beat_data):
     return note_data, CC_data, pitch_bend_data
 
 def write_json_file(file_name, data):
-    with open(file_name, 'w') as f:
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+    
+    file_path = os.path.join(output_dir, file_name)
+    with open(file_path, 'w') as f:
         json.dump(data, f, indent=4)
 
 def main():
